@@ -43,22 +43,22 @@ jobs:
           pip install -r requirements.txt
 
       - name: Print CL args for the calculate-tin.py
-        run: python src/tin_score_calculation.py --help
+        run: python scripts/calculate-tin.py --help
 
       - name: Test calculate-tin.py
-        run: python src/tin_score_calculation.py -i tests/test.bam -r tests/test.bed --names "sample_name"
+        run: python scripts/calculate-tin.py -i tests/test.bam -r tests/test.bed --names "sample_name"
 
       - name: Print CL args for the merge-tin.py
-        run: python src/tin_score_merge.py --help
+        run: python scripts/merge-tin.py --help
 
       - name: Test merge-tin.py
-        run: python src/tin_score_merge.py --input-files tests/test_TIN1.tsv tests/test_TIN2.tsv --output-file tests/test_TIN_merged2.tsv
+        run: python scripts/merge-tin.py --input-files tests/test_TIN1.tsv tests/test_TIN2.tsv --output-file tests/test_TIN_merged2.tsv
 
       - name: Print CL args for the plot-tin.py
-        run: python src/tin_score_plot.py --help
+        run: python scripts/plot-tin.py --help
 
       - name: Test plot-tin.py
-        run: python src/tin_score_plot.py --input-file tests/test_TIN_merged.tsv --output-file-prefix tests/TIN_boxplots
+        run: python scripts/plot-tin.py --input-file tests/test_TIN_merged.tsv --output-file-prefix tests/TIN_boxplots
 
   linting:
     runs-on: ubuntu-20.04
@@ -74,6 +74,6 @@ jobs:
           pip install flake8
 
       - name: Static code analysis
-        run: /home/runner/.local/bin/flake8 src/
+        run: /home/runner/.local/bin/flake8 scripts/
 
 ...
