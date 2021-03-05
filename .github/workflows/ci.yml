@@ -24,6 +24,7 @@ jobs:
   testing:
     runs-on: ${{ matrix.os }}
     strategy:
+      fail-fast: false
       matrix:
         os: [macos-10.15, ubuntu-20.04]
 
@@ -32,10 +33,10 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
-      - name: Set up Python 3.7
+      - name: Set up Python 3.7.10
         uses: actions/setup-python@v2
         with:
-          python-version: 3.7
+          python-version: 3.7.10
 
       - name: Install the dependencies
         run: |
