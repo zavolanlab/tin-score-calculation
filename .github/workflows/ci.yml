@@ -64,4 +64,4 @@ jobs:
           pip install flake8
 
       - name: Static code analysis
-        run: flake8 src/
+        run: /home/runner/.local/bin/flake8 src/
