@@ -28,7 +28,9 @@ jobs:
           python-version: 2.7.18
 
       - name: Install the dependencies
-        run: pip install -r requirements.txt
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
 
       - name: Print CL args for the calculate-tin.py
         run: python src/tin_score_calculation.py --help
@@ -47,3 +49,19 @@ jobs:
 
       - name: Test plot-tin.py
         run: python src/tin_score_plot.py --input-file tests/test_TIN_merged.tsv --output-file-prefix tests/TIN_boxplots
+
+  linting:
+    runs-on: ubuntu-20.04
+
+    steps:
+
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Install the dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install flake8
+
+      - name: Static code analysis
+        run: flake8 src/
