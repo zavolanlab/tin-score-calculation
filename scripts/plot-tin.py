@@ -17,8 +17,8 @@ import logging.handlers
 from argparse import ArgumentParser, RawTextHelpFormatter
 import pandas as pd
 import matplotlib
-matplotlib.use('Agg')  # noqa: E402
-from matplotlib import pyplot as plt
+matplotlib.use('Agg')
+from matplotlib import pyplot as plt  # noqa: E402
 
 
 def parse_arguments():
@@ -59,28 +59,28 @@ def main():
 
         ax = plt.gca()
         ax = merged.plot(
-                kind='box',
-                ax=ax,
-                color=dict(boxes='k', whiskers='k', medians='k', caps='k'),
-                boxprops=dict(linestyle='-', linewidth=1.5),
-                flierprops=dict(linestyle='-', linewidth=1.5),
-                medianprops=dict(linestyle='-', linewidth=1.5),
-                whiskerprops=dict(linestyle='-', linewidth=1.5),
-                capprops=dict(linestyle='-', linewidth=1.5),
-                showfliers=False,
-                grid=True,
-                rot=0)
+            kind='box',
+            ax=ax,
+            color=dict(boxes='k', whiskers='k', medians='k', caps='k'),
+            boxprops=dict(linestyle='-', linewidth=1.5),
+            flierprops=dict(linestyle='-', linewidth=1.5),
+            medianprops=dict(linestyle='-', linewidth=1.5),
+            whiskerprops=dict(linestyle='-', linewidth=1.5),
+            capprops=dict(linestyle='-', linewidth=1.5),
+            showfliers=False,
+            grid=True,
+            rot=0)
 
         plt.ylim([0, 100])
-        plt.yticks([10*i for i in range(0, 11)])
+        plt.yticks([10 * i for i in range(0, 11)])
         ax.xaxis.grid(False)
         ax.yaxis.grid(color='black', linestyle='-', linewidth=0.5, alpha=0.5)
 
     plt.savefig(
-        options.outfile_prefix+".png",
+        options.outfile_prefix + ".png",
         format="png")
     plt.savefig(
-        options.outfile_prefix+".pdf",
+        options.outfile_prefix + ".pdf",
         format="pdf")
 
 ##############################################################################
