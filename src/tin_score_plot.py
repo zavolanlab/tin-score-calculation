@@ -17,8 +17,8 @@ import logging.handlers
 from argparse import ArgumentParser, RawTextHelpFormatter
 import pandas as pd
 import matplotlib
-matplotlib.use('Agg')  # noqa: E402
-from matplotlib import pyplot as plt
+matplotlib.use('Agg')
+from matplotlib import pyplot as plt  # noqa: E402
 
 
 def parse_arguments():
