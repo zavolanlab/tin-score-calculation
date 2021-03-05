@@ -93,10 +93,10 @@ def build_bitsets(list):
     """
 
     ranges = {}
-    for l in list:
-        chrom = l[0]
-        st = l[1]
-        end = l[2]
+    for element in list:
+        chrom = element[0]
+        st = element[1]
+        end = element[2]
         if chrom not in ranges:
             ranges[chrom] = Intersecter()
         ranges[chrom].add_interval(Interval(st, end))
