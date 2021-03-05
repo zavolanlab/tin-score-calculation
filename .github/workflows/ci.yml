@@ -22,10 +22,28 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
-      - name: Set up Python 2.7
+      - name: Set up Python 2.7.18
         uses: actions/setup-python@v2
         with:
-          python-version: 2.7
+          python-version: 2.7.18
 
       - name: Install the dependencies
         run: pip install -r requirements.txt
+
+      - name: Print CL args for the calculate-tin.py
+        run: python src/tin_score_calculation.py --help
+
+      - name: Test calculate-tin.py
+        run: python src/tin_score_calculation.py -i tests/test.bam -r tests/test.bed --names "sample_name"
+
+      - name: Print CL args for the merge-tin.py
+        run: python src/tin_score_merge.py --help
+
+      - name: Test merge-tin.py
+        run: python src/tin_score_merge.py --input-files tests/test_TIN1.tsv tests/test_TIN2.tsv --output-file tests/test_TIN_merged2.tsv
+
+      - name: Print CL args for the plot-tin.py
+        run: python src/tin_score_plot.py --help
+
+      - name: Test plot-tin.py
+        run: python src/tin_score_plot.py --input-file tests/test_TIN_merged.tsv --output-file-prefix tests/TIN_boxplots
