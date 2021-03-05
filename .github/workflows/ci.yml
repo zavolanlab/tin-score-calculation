@@ -1,3 +1,13 @@
+###############################################################################
+#
+#   AUTHOR: Maciej_Bak
+#   AFFILIATION: Swiss_Institute_of_Bioinformatics
+#   CONTACT: maciej.bak@unibas.ch
+#   CREATED: 05-03-2021
+#
+###############################################################################
+---
+
 name: ci
 
 on:
@@ -64,4 +74,6 @@ jobs:
           pip install flake8
 
       - name: Static code analysis
-        run: /home/runner/.local/bin/flake8 --ignore E402 src/
+        run: /home/runner/.local/bin/flake8 src/
+
+...
