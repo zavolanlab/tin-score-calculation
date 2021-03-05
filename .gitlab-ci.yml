@@ -1,0 +1,23 @@
+image: python:2.7.16
+
+before_script:
+  - apt-get update -y && \
+    apt-get install -y --no-install-recommends \
+      libbz2-dev \
+      liblzma-dev \
+      zlib1g-dev && \
+    apt-get autoremove -y && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+  - pip install -r requirements.txt
+
+test:
+  script:
+    - python src/tin_score_calculation.py --help
+    - python src/tin_score_calculation.py -i tests/test.bam -r tests/test.bed --names "sample_name"
+    - python src/tin_score_merge.py --help
+    - python src/tin_score_merge.py --input-files tests/test_TIN1.tsv tests/test_TIN2.tsv --output-file tests/test_TIN_merged2.tsv
+    - python src/tin_score_plot.py --help
+    - python src/tin_score_plot.py --input-file tests/test_TIN_merged.tsv --output-file-prefix tests/TIN_boxplots
+    - flake8 src/
+
