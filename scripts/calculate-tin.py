@@ -542,9 +542,8 @@ def main():
 
         pool.map(gf, conditions)
 
-    print(sample_TINS_per_transcript[sorted(sample_TINS_per_transcript.keys())[2]])
     for ex in sorted(sample_TINS_per_transcript.keys()):
-        val = map(str, sample_TINS_per_transcript[ex])
+        val = round(sample_TINS_per_transcript[ex][0], 10)
         print(
             "%s\t%s"
             % (ex, "\t".join(map(str, val))),
