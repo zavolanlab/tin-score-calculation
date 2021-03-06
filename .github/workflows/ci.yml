@@ -41,7 +41,7 @@ jobs:
       - name: Install the dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install --user -r requirements.txt
+          sudo pip install -r requirements.txt
 
       - name: Print CL args for the calculate-tin.py
         run: python scripts/calculate-tin.py --help
