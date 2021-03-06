@@ -44,19 +44,25 @@ jobs:
           pip3 install --user -r requirements.txt
 
       - name: Print CL args for the calculate-tin.py
-        run: python scripts/calculate-tin.py --help
+        run: |
+          python scripts/calculate-tin.py --help 1> .test/calculate-tin/ci-help-stdout.txt
+          cmp .test/calculate-tin/ci-help-stdout.txt .test/calculate-tin/help-stdout.txt
 
       - name: Test calculate-tin.py
         run: python scripts/calculate-tin.py -i .test/calculate-tin/sample.bam -r .test/calculate-tin/transcripts.bed --names "sample_name" 1> .test/calculate-tin/ci.tsv
 
       - name: Print CL args for the merge-tin.py
-        run: python scripts/merge-tin.py --help
+        run: |
+          python scripts/merge-tin.py --help 1> .test/merge-tin/ci-help-stdout.txt
+          cmp .test/merge-tin/ci-help-stdout.txt .test/merge-tin/help-stdout.txt
 
       - name: Test merge-tin.py
         run: python scripts/merge-tin.py --input-files .test/merge-tin/sample_1.tsv .test/merge-tin/sample_2.tsv --output-file .test/merge-tin/ci.tsv
 
       - name: Print CL args for the plot-tin.py
-        run: python scripts/plot-tin.py --help
+        run: |
+          python scripts/plot-tin.py --help 1> .test/plot-tin/ci-help-stdout.txt
+          cmp .test/plot-tin/ci-help-stdout.txt .test/plot-tin/help-stdout.txt
 
       - name: Test plot-tin.py
         run: python scripts/plot-tin.py --input-file .test/plot-tin/merged.tsv --output-file-prefix .test/plot-tin/ci
