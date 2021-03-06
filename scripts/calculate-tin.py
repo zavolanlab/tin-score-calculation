@@ -542,7 +542,7 @@ def main():
 
         pool.map(gf, conditions)
 
-    print(sample_TINS_per_transcript[sample_TINS_per_transcript.keys()[0]])
+    print(sample_TINS_per_transcript[sorted(sample_TINS_per_transcript.keys()[2]]))
     for ex in sorted(sample_TINS_per_transcript.keys()):
         val = map(str, sample_TINS_per_transcript[ex])
         print(
