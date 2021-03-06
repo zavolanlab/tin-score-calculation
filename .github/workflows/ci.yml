@@ -51,6 +51,7 @@ jobs:
       - name: Test calculate-tin.py
         run: |
           python scripts/calculate-tin.py -i .test/calculate-tin/sample.bam -r .test/calculate-tin/transcripts.bed --names "sample_name" 1> .test/calculate-tin/ci.tsv
+          cat .test/calculate-tin/ci.tsv
           cmp .test/calculate-tin/ci.tsv .test/calculate-tin/sample.tsv
 
       - name: Test --help param for the merge-tin.py
