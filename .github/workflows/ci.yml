@@ -40,7 +40,7 @@ jobs:
 
       - name: Install the dependencies
         run: |
-          python -m pip3 install --upgrade pip
+          python3 -m pip install --upgrade pip
           pip3 install -r requirements.txt
 
       - name: Print CL args for the calculate-tin.py
@@ -71,7 +71,7 @@ jobs:
 
       - name: Install the dependencies
         run: |
-          python -m pip3 install --upgrade pip
+          python3 -m pip install --upgrade pip
           pip3 install --user flake8
 
       - name: Static code analysis
