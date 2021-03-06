@@ -40,8 +40,8 @@ jobs:
 
       - name: Install the dependencies
         run: |
-          python -m pip install --upgrade pip
-          sudo pip install -r requirements.txt
+          python -m pip3 install --upgrade pip
+          pip3 install -r requirements.txt
 
       - name: Print CL args for the calculate-tin.py
         run: python scripts/calculate-tin.py --help
@@ -71,8 +71,8 @@ jobs:
 
       - name: Install the dependencies
         run: |
-          python -m pip install --upgrade pip
-          pip install --user flake8
+          python -m pip3 install --upgrade pip
+          pip3 install --user flake8
 
       - name: Static code analysis
         run: /home/runner/.local/bin/flake8 scripts/
