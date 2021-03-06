@@ -544,7 +544,7 @@ def main():
 
     print(sample_TINS_per_transcript[sample_TINS_per_transcript.keys()[0]])
     for ex in sorted(sample_TINS_per_transcript.keys()):
-        val = round(map(str, sample_TINS_per_transcript[ex]), 10)
+        val = map(str, sample_TINS_per_transcript[ex])
         print(
             "%s\t%s"
             % (ex, "\t".join(map(str, val))),
