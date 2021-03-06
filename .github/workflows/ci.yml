@@ -47,19 +47,19 @@ jobs:
         run: python scripts/calculate-tin.py --help
 
       - name: Test calculate-tin.py
-        run: python scripts/calculate-tin.py -i tests/test.bam -r tests/test.bed --names "sample_name"
+        run: python scripts/calculate-tin.py -i .test/calculate-tin/sample.bam -r .test/calculate-tin/transcripts.bed --names "sample_name" 1> .test/calculate-tin/ci.tsv
 
       - name: Print CL args for the merge-tin.py
         run: python scripts/merge-tin.py --help
 
       - name: Test merge-tin.py
-        run: python scripts/merge-tin.py --input-files tests/test_TIN1.tsv tests/test_TIN2.tsv --output-file tests/test_TIN_merged2.tsv
+        run: python scripts/merge-tin.py --input-files .test/merge-tin/sample_1.tsv .test/merge-tin/sample_2.tsv --output-file .test/merge-tin/ci.tsv
 
       - name: Print CL args for the plot-tin.py
         run: python scripts/plot-tin.py --help
 
       - name: Test plot-tin.py
-        run: python scripts/plot-tin.py --input-file tests/test_TIN_merged.tsv --output-file-prefix tests/TIN_boxplots
+        run: python scripts/plot-tin.py --input-file .test/plot-tin/merged.tsv --output-file-prefix .test/plot-tin/ci
 
   linting:
     runs-on: ubuntu-20.04
