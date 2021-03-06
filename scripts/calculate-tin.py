@@ -542,7 +542,7 @@ def main():
 
         pool.map(gf, conditions)
 
-    for ex in sample_TINS_per_transcript.keys():
+    for ex in sorted(sample_TINS_per_transcript.keys()):
         print(
             "%s\t%s"
             % (ex, "\t".join(map(str, sample_TINS_per_transcript[ex]))),
