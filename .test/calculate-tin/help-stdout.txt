@@ -1,0 +1,46 @@
+Usage: calculate-tin.py [options]
+----------------------------------------------------------------------------
+This program calculates transcript integrity number (TIN) for each transcript
+(or gene) in BED file. TIN is conceptually similar to RIN
+(RNA integrity number) but provides transcript level measurement of RNA quality
+and is more sensitive to measure low quality RNA samples:
+
+1) TIN score of a transcript is used to measure the RNA integrity
+    of the transcript.
+2) Median TIN score across all transcripts can be used to measure RNA integrity
+    of that "RNA sample".
+3) TIN ranges from 0 (the worst) to 100 (the best). TIN = 60 means: 60% of the
+    transcript has been covered if the reads coverage were uniform.
+4) TIN will be assigned to 0 if the transcript has no coverage or covered reads
+    is fewer than cutoff.
+----------------------------------------------------------------------------
+
+
+Options:
+  --version             show program's version number and exit
+  -h, --help            show this help message and exit
+  -i INPUT_FILES, --input=INPUT_FILES
+                        Input BAM file(s). "-i" takes these input: 1) a single
+                        BAM file. 2) "," separated BAM files (no spaces
+                        allowed). 3) directory containing one or more bam
+                        files. 4) plain text file containing the path of one
+                        or more bam files (Each row is a BAM file path). All
+                        BAM files should be sorted and indexed using samtools.
+                        [required]
+  -r REF_GENE_MODEL, --refgene=REF_GENE_MODEL
+                        Reference gene model in BED format. Must be strandard
+                        12-column BED file. [required]
+  -c MINIMUM_COVERAGE, --minCov=MINIMUM_COVERAGE
+                        Minimum number of read mapped to a transcript.
+                        default=10
+  -n SAMPLE_SIZE, --sample-size=SAMPLE_SIZE
+                        Number of equal-spaced nucleotide positions picked
+                        from mRNA. Note: if this number is larger than the
+                        length of mRNA (L), it will be halved until it's
+                        smaller than L. default=100
+  --names=SAMPLE_NAMES  sample names, comma separated (no spaces allowed);
+                        number must match the number of provided bam_files
+  -s, --subtract-background
+                        Subtract background noise (estimated from intronic
+                        reads). Only use this option if there are substantial
+                        intronic reads.
