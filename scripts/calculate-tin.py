@@ -542,10 +542,11 @@ def main():
 
         pool.map(gf, conditions)
 
-    for ex in sample_TINS_per_transcript.keys():
+    for ex in sorted(sample_TINS_per_transcript.keys()):
+        vals = [round(x, 10) for x in sample_TINS_per_transcript[ex]]
         print(
             "%s\t%s"
-            % (ex, "\t".join(map(str, sample_TINS_per_transcript[ex]))),
+            % (ex, "\t".join(map(str, vals))),
             file=sys.stdout,
         )
 
