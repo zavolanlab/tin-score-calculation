@@ -87,13 +87,13 @@ def shannon_entropy(arg):
     return entropy
 
 
-def build_bitsets(list):
+def build_bitsets(arg_list):
     """
     build intevalTree from list
     """
 
     ranges = {}
-    for element in list:
+    for element in arg_list:
         chrom = element[0]
         st = element[1]
         end = element[2]
