@@ -72,10 +72,10 @@ def shannon_entropy(arg):
 
     entropy = 0.0
 
-    nums = np.array(arg)
     if not nums:
         return entropy
     # use numpy functions to speed up calculations
+    nums = np.array(arg)
     lst_sum = sum(nums)
     fracs = nums / lst_sum
     log_fracs = np.log(fracs)
