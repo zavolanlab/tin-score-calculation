@@ -72,10 +72,10 @@ def shannon_entropy(arg):
 
     entropy = 0.0
 
-    nums = np.array(arg)
-    if not len(nums):
+    if not arg:
         return entropy
     # use numpy functions to speed up calculations
+    nums = np.array(arg)
     lst_sum = sum(nums)
     fracs = nums / lst_sum
     log_fracs = np.log(fracs)
@@ -87,13 +87,13 @@ def shannon_entropy(arg):
     return entropy
 
 
-def build_bitsets(list):
+def build_bitsets(arg_list):
     """
     build intevalTree from list
     """
 
     ranges = {}
-    for element in list:
+    for element in arg_list:
         chrom = element[0]
         st = element[1]
         end = element[2]
@@ -292,15 +292,14 @@ def genebody_coverage(samfile, chrom, positions, bg_level=0):
 
     if bg_level <= 0:
         return cvg
-    else:
-        tmp = []
-        for i in cvg:
-            subtracted_sig = int(i - bg_level)
-            if subtracted_sig > 0:
-                tmp.append(subtracted_sig)
-            else:
-                tmp.append(0)
-        return tmp
+    tmp = []
+    for i in cvg:
+        subtracted_sig = int(i - bg_level)
+        if subtracted_sig > 0:
+            tmp.append(subtracted_sig)
+        else:
+            tmp.append(0)
+    return tmp
 
 
 def tin_score(cvg, length):
@@ -512,8 +511,7 @@ def main():
         refbed=options.ref_gene_model, sample_size=options.sample_size
     )
 
-    for f_idx in range(len(bamfiles)):
-        f = bamfiles[f_idx]
+    for f in bamfiles:
         printlog("Processing " + f)
 
         conditions = []

@@ -6,7 +6,7 @@ Liguo Wang (email: wang.liguo@mayo.edu)
 
 ## Maintainers
 
-[Mihaela Zavolan](https://git.scicore.unibas.ch/zavolan) (email: mihaela.zavolan@unibas.ch)
+[Mihaela Zavolan](https://www.biozentrum.unibas.ch/research/researchgroups/overview/unit/zavolan/) (email: mihaela.zavolan@unibas.ch)
 
 ## Additional contributors
 

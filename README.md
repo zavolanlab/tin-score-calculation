@@ -1,3 +1,8 @@
+[![ci](https://github.com/zavolanlab/tin-score-calculation/workflows/ci/badge.svg?branch=dev)](https://github.com/zavolanlab/tin-score-calculation/actions?query=workflow%3Aci)
+[![CodeFactor](https://www.codefactor.io/repository/github/zavolanlab/tin-score-calculation/badge)](https://www.codefactor.io/repository/github/zavolanlab/tin-score-calculation)
+[![GitHub issues](https://img.shields.io/github/issues/zavolanlab/tin-score-calculation)](https://github.com/zavolanlab/tin-score-calculation/issues)
+[![GitHub license](https://img.shields.io/github/license/zavolanlab/tin-score-calculation)](https://github.com/zavolanlab/tin-score-calculation/blob/dev/LICENSE)
+
 # TIN score calculation
 
 Given a set of BAM files and a gene annotation BED file, calculates the
@@ -6,7 +11,7 @@ Transcript Integrity Number (TIN) for each transcript.
 ## Main usage
 
 ```sh
-python tin_score_calculation.py [-h] [options]
+python calculate-tin.py [-h] [options]
 ```
 
 ### Parameters
@@ -82,14 +87,14 @@ is fewer than cutoff.
 
 ## Extended usage
 
-Additionaly, this repository has been updated with two simple Python scripts:
+Additionaly, this repository has been updated with two simple Python scripts.
 
-### TIN score merge
+### TIN score merging
 
-Merge TIN score TSV tables for multiple input samples.
+Merge TIN score tables for multiple samples.
 
 ```sh
-python tin_score_merge.py [-h] [options]
+python merge-tin.py [-h] [options]
 ```
 
 ### Parameters
@@ -108,12 +113,12 @@ python tin_score_merge.py [-h] [options]
 
 Output file is formatted in a TSV table as well.
 
-### TIN score plot
+### TIN score plotting
 
 Create per-sample [boxplots](https://en.wikipedia.org/wiki/Box_plot) of TIN scores.
 
 ```sh
-python tin_score_plot.py [-h] [options]
+python plot-tin.py [-h] [options]
 ```
 
 ### Parameters
@@ -135,31 +140,39 @@ The boxplots are generated in [PDF](https://en.wikipedia.org/wiki/PDF) and
 
 ## Run locally
 
-In order to use the scripts, you will need to clone the repository and install
+In order to use the scripts you will need to clone this repository and install
 the dependencies:
 
 ```sh
-git clone https://git.scicore.unibas.ch/zavolan_group/tools/tin_score_calculation
-cd tin_score_calculation
+git clone https://github.com/zavolanlab/tin-score-calculation
+cd tin-score-calculation
 pip install -r requirements.txt
-# Optional: run tests
-pytest
 ```
 
 > **NOTES:**  
 >  
 > - You may want to install dependencies inside a virtual environment,
->   e.g., using [`virtualenv`](https://virtualenv.pypa.io/en/latest/).
-> - Some of the dependencies require specific system libraries to be installed.
+>   e.g., using [`virtualenv`](https://virtualenv.pypa.io/en/latest/). Alternatively, if you use [`conda`](https://docs.conda.io/en/latest/) we provide an environment recipe too - in such case just run `conda env create`.
+> - Some of the dependencies require specific system libraries to be installed, this however should be taken care of by the package manager.
 
-You can then find the scripts in directory `src/` and run it as described in
+You can then find the scripts in directory `scripts/` and run it as described in
 the [Main usage](#main-usage) and [Extended usage](#extended-usage) sections.
 To run the tool with minimum test files, try:
 
 ```sh
-python src/tin_score_calculation.py -i tests/test.bam -r tests/test.bed --names "sample_name"
-python src/tin_score_merge.py --input-files test/test_TIN1.tsv,test/test_TIN2.tsv --output-file tests/TIN_merged.tsv
-python src/tin_score_plot.py --input-file tests/test_TIN_merged.tsv --output-file-prefix tests/TIN_boxplots
+python scripts/calculate-tin.py \
+-i .test/calculate-tin/sample.bam \
+-r .test/calculate-tin/transcripts.bed \
+--names "sample_name" \
+1> .test/calculate-tin/test.tsv
+
+python scripts/merge-tin.py \
+--input-files .test/merge-tin/sample_1.tsv .test/merge-tin/sample_2.tsv \
+--output-file .test/merge-tin/test.tsv
+
+python scripts/plot-tin.py \
+--input-file .test/plot-tin/merged.tsv \
+--output-file-prefix .test/plot-tin/test
 ```
 
 ## Run inside container
@@ -183,16 +196,10 @@ docker run --rm zavolab/tin_score_calculation:0.3.0 -i tests/test.bam -r tests/t
 > the container read input files and write persistent output from/to the host
 > file system.
 
-## Tags
-
-bioinformatics, quality control, rna-seq, bam, bed, tsv, transcript integrity
-
 ## Version
 
-0.3.0
+0.4.0
 
 ## Contact
 
-- Maintainer: [Mihaela Zavolan](https://git.scicore.unibas.ch/zavolan)
-- Affiliation: Zavolan lab, Biozentrum, University of Basel
-- Email: mihaela.zavolan@unibas.ch
+Please see the [list of contributors](contributors.md) for contact information.
