@@ -1,3 +1,8 @@
+[![ci](https://github.com/zavolanlab/tin-score-calculation/workflows/ci/badge.svg?branch=dev)](https://github.com/zavolanlab/tin-score-calculation/actions?query=workflow%3Aci)
+[![CodeFactor](https://www.codefactor.io/repository/github/zavolanlab/tin-score-calculation/badge)](https://www.codefactor.io/repository/github/zavolanlab/tin-score-calculation)
+[![GitHub issues](https://img.shields.io/github/issues/zavolanlab/tin-score-calculation)](https://github.com/zavolanlab/tin-score-calculation/issues)
+[![GitHub license](https://img.shields.io/github/license/zavolanlab/tin-score-calculation)](https://github.com/zavolanlab/tin-score-calculation/blob/dev/LICENSE)
+
 # TIN score calculation
 
 Given a set of BAM files and a gene annotation BED file, calculates the
