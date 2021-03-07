@@ -73,7 +73,7 @@ def shannon_entropy(arg):
     entropy = 0.0
 
     nums = np.array(arg)
-    if not len(nums):
+    if not nums:
         return entropy
     # use numpy functions to speed up calculations
     lst_sum = sum(nums)
@@ -292,15 +292,14 @@ def genebody_coverage(samfile, chrom, positions, bg_level=0):
 
     if bg_level <= 0:
         return cvg
-    else:
-        tmp = []
-        for i in cvg:
-            subtracted_sig = int(i - bg_level)
-            if subtracted_sig > 0:
-                tmp.append(subtracted_sig)
-            else:
-                tmp.append(0)
-        return tmp
+    tmp = []
+    for i in cvg:
+        subtracted_sig = int(i - bg_level)
+        if subtracted_sig > 0:
+            tmp.append(subtracted_sig)
+        else:
+            tmp.append(0)
+    return tmp
 
 
 def tin_score(cvg, length):
