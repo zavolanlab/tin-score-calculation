@@ -511,8 +511,7 @@ def main():
         refbed=options.ref_gene_model, sample_size=options.sample_size
     )
 
-    for f_idx in range(len(bamfiles)):
-        f = bamfiles[f_idx]
+    for f in bamfiles:
         printlog("Processing " + f)
 
         conditions = []
