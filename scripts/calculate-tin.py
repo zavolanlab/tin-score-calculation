@@ -72,7 +72,7 @@ def shannon_entropy(arg):
 
     entropy = 0.0
 
-    if not nums:
+    if not arg:
         return entropy
     # use numpy functions to speed up calculations
     nums = np.array(arg)
