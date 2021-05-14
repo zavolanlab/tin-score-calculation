@@ -71,7 +71,7 @@ jobs:
       - name: Test plot-tin.py
         run: |
           plot-tin.py --input-file .test/plot-tin/merged.tsv --output-file-prefix .test/plot-tin/ci
-          # .pdf and might differ so we cannot test
+          # .pdf and png might differ so we cannot test
 
   linting:
     runs-on: ubuntu-20.04
