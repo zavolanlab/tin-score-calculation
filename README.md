@@ -146,7 +146,7 @@ the dependencies:
 ```sh
 git clone https://github.com/zavolanlab/tin-score-calculation
 cd tin-score-calculation
-pip install -r requirements.txt
+pip install .
 ```
 
 > **NOTES:**  
@@ -160,17 +160,17 @@ the [Main usage](#main-usage) and [Extended usage](#extended-usage) sections.
 To run the tool with minimum test files, try:
 
 ```sh
-python scripts/calculate-tin.py \
+calculate-tin.py \
 -i .test/calculate-tin/sample.bam \
 -r .test/calculate-tin/transcripts.bed \
 --names "sample_name" \
 1> .test/calculate-tin/test.tsv
 
-python scripts/merge-tin.py \
+merge-tin.py \
 --input-files .test/merge-tin/sample_1.tsv .test/merge-tin/sample_2.tsv \
 --output-file .test/merge-tin/test.tsv
 
-python scripts/plot-tin.py \
+plot-tin.py \
 --input-file .test/plot-tin/merged.tsv \
 --output-file-prefix .test/plot-tin/test
 ```
