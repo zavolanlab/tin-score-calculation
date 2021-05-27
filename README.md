@@ -149,6 +149,17 @@ cd tin-score-calculation
 pip install .
 ```
 
+Alternatively you can install it via pypi by:
+```sh
+pip install tin-score-calculation
+```
+
+Alternatively you can install it via conda by:
+
+```sh
+conda install -c bioconda -c conda-forge tin-score-calculation
+```
+
 > **NOTES:**  
 >  
 > - You may want to install dependencies inside a virtual environment,
@@ -181,14 +192,15 @@ If you have [Docker](https://www.docker.com/) installed, you can also pull the
 Docker image:
 
 ```sh
-docker pull zavolab/tin_score_calculation:0.3.0
+docker pull quay.io/biocontainers/tin-score-calculation:0.4--pyh5e36f6f_0
 ```
 
-The scripts can be found in directory `/home/user/tin_score_calculation/src`
-inside the Docker container. You can verify they are working by running, e.g.:
+You can execute the scripts as following:
 
 ```sh
-docker run --rm zavolab/tin_score_calculation:0.3.0 -i tests/test.bam -r tests/test.bed --names "sample_name"
+docker run -it quay.io/biocontainers/tin-score-calculation:0.4--pyh5e36f6f_0 calculate-tin.py --help
+docker run -it quay.io/biocontainers/tin-score-calculation:0.4--pyh5e36f6f_0 merge-tin.py --help
+docker run -it quay.io/biocontainers/tin-score-calculation:0.4--pyh5e36f6f_0 plot-tin.py --help
 ```
 
 > **NOTE:** To run the tool on your own data in that manner, you will probably
