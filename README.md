@@ -149,6 +149,11 @@ cd tin-score-calculation
 pip install .
 ```
 
+Alternatively you can install it via pypi by:
+```sh
+pip install tin-score-calculation
+```
+
 Alternatively you can install it via conda by:
 
 ```sh
