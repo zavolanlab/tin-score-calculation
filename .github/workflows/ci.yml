@@ -87,6 +87,6 @@ jobs:
           pip3 install --user flake8==3.7.9
 
       - name: Static code analysis
-        run: /home/runner/.local/bin/flake8 scripts/
+        run: /home/runner/.local/bin/flake8 --max-line-length=120 scripts/
 
 ...
