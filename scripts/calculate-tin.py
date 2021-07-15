@@ -165,10 +165,10 @@ def genomic_positions(refbed, sample_size):
                 tx_end = int(fields[2])
                 geneName = fields[3]
                 mRNA_size = sum([int(i) for i in fields[10].strip(",").split(",")])
-                exon_starts = list(map(int, fields[11].rstrip(",\n").split(",")))
-                exon_starts = list(map((lambda x: x + tx_start), exon_starts))
-                exon_ends = list(map(int, fields[10].rstrip(",\n").split(",")))
-                exon_ends = list(map((lambda x, y: x + y), exon_starts, exon_ends))
+                exon_starts = [int(x) for x in fields[11].rstrip(",\n").split(",")]
+                exon_starts = [x + tx_start for x in exon_starts]
+                exon_ends = [int(x) for x in fields[10].rstrip(",\n").split(",")]
+                exon_ends = [x + y for (x,y) in zip(exon_starts, exon_ends)]
                 intron_size = tx_end - tx_start - mRNA_size
                 if intron_size < 0:
                     intron_size = 0
