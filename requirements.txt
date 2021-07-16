@@ -1,5 +1,4 @@
 bx-python>=0.8.10
-guppy3>=3.1.0
 matplotlib>=3.3.4
 pandas>=1.2.3
 psutil>=5.8.0

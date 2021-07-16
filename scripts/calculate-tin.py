@@ -25,7 +25,6 @@ import warnings
 
 from bx.intervals import Intersecter, Interval
 from qcmodule import BED
-from guppy import hpy
 import numpy as np
 import pysam
 
@@ -542,10 +541,6 @@ def main():
     # clean up processes
     pool.close()
     pool.join()
-
-
-#    hout = h.heap()
-#    print(hout.byrcs)
 
 
 if __name__ == "__main__":
