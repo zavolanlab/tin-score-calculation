@@ -25,7 +25,6 @@ import warnings
 
 from bx.intervals import Intersecter, Interval
 from qcmodule import BED
-from guppy import hpy
 import numpy as np
 import pysam
 
@@ -44,8 +43,6 @@ __maintainer__ = "Liguo Wang"
 __email__ = "wang.liguo@mayo.edu"
 __status__ = "Production"
 __multithreadingBy__ = "Mihaela Zavolan"
-
-h = hpy()
 
 
 def printlog(mesg):
@@ -542,10 +539,6 @@ def main():
     # clean up processes
     pool.close()
     pool.join()
-
-
-#    hout = h.heap()
-#    print(hout.byrcs)
 
 
 if __name__ == "__main__":
