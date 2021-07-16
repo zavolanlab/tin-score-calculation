@@ -210,7 +210,7 @@ docker run -it quay.io/biocontainers/tin-score-calculation:0.4--pyh5e36f6f_0 plo
 
 ## Version
 
-0.4.0
+0.5.0
 
 ## Contact
 

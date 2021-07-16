@@ -164,13 +164,11 @@ def genomic_positions(refbed, sample_size):
                 tx_start = int(fields[1])
                 tx_end = int(fields[2])
                 geneName = fields[3]
-                mRNA_size = sum(
-                    [int(i) for i in fields[10].strip(",").split(",")]
-                )
-                exon_starts = map(int, fields[11].rstrip(",\n").split(","))
-                exon_starts = map((lambda x: x + tx_start), exon_starts)
-                exon_ends = map(int, fields[10].rstrip(",\n").split(","))
-                exon_ends = map((lambda x, y: x + y), exon_starts, exon_ends)
+                mRNA_size = sum([int(i) for i in fields[10].strip(",").split(",")])
+                exon_starts = [int(x) for x in fields[11].rstrip(",\n").split(",")]
+                exon_starts = [x + tx_start for x in exon_starts]
+                exon_ends = [int(x) for x in fields[10].rstrip(",\n").split(",")]
+                exon_ends = [x + y for (x, y) in zip(exon_starts, exon_ends)]
                 intron_size = tx_end - tx_start - mRNA_size
                 if intron_size < 0:
                     intron_size = 0
@@ -341,14 +339,10 @@ def gf(arg_list):
 
     # check minimum reads coverage
     if (
-        check_min_reads(
-            samfile, i_chr, i_tx_start, i_tx_end, options.minimum_coverage
-        )
+        check_min_reads(samfile, i_chr, i_tx_start, i_tx_end, options.minimum_coverage)
         is not True
     ):
-        sample_TINS_per_transcript[gname] = sample_TINS_per_transcript[
-            gname
-        ] + [0.0]
+        sample_TINS_per_transcript[gname] = sample_TINS_per_transcript[gname] + [0.0]
     else:
         # estimate background noise if '-s' was specified
         if options.subtract_bg:
@@ -362,9 +356,7 @@ def gf(arg_list):
             samfile, i_chr, sorted(pick_positions), noise_level
         )
         tin1 = tin_score(cvg=coverage, length=len(pick_positions))
-        sample_TINS_per_transcript[gname] = sample_TINS_per_transcript[
-            gname
-        ] + [tin1]
+        sample_TINS_per_transcript[gname] = sample_TINS_per_transcript[gname] + [tin1]
 
     samfile.close()
     # log memory usage
@@ -543,8 +535,7 @@ def main():
     for ex in sorted(sample_TINS_per_transcript.keys()):
         vals = [round(x, 10) for x in sample_TINS_per_transcript[ex]]
         print(
-            "%s\t%s"
-            % (ex, "\t".join(map(str, vals))),
+            "%s\t%s" % (ex, "\t".join(map(str, vals))),
             file=sys.stdout,
         )
 
