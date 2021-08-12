@@ -73,6 +73,16 @@ jobs:
           plot-tin.py --input-file .test/plot-tin/merged.tsv --output-file-prefix .test/plot-tin/ci
           # .pdf and png might differ so we cannot test
 
+      - name: Test --help param for the summarize-tin.py
+        run: |
+          summarize-tin.py --help 1> .test/summarize-tin/ci-help-stdout.txt
+          cmp .test/summarize-tin/ci-help-stdout.txt .test/summarize-tin/help-stdout.txt
+
+      - name: Test summarize-tin.py
+        run: |
+          summarize-tin.py --input-file .test/summarize-tin/merged.tsv --output-file .test/summarize-tin/ci
+          cmp .test/summarize-tin/ci.tsv .test/summarize-tin/summary.tsv
+
   linting:
     runs-on: ubuntu-20.04
 

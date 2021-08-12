@@ -1,0 +1,12 @@
+usage: summarize-tin.py [-h] [-v {DEBUG,INFO,WARN,ERROR,CRITICAL}]
+                        [-l LOGFILE] --input-file INFILE --output-file OUTFILE
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -v {DEBUG,INFO,WARN,ERROR,CRITICAL}, --verbosity {DEBUG,INFO,WARN,ERROR,CRITICAL}
+                        Verbosity/Log level. Defaults to ERROR
+  -l LOGFILE, --logfile LOGFILE
+                        Store log to this file.
+  --input-file INFILE   Path to the table with merged TIN scores
+  --output-file OUTFILE
+                        Path for the output table with TIN statistics.
