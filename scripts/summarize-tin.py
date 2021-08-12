@@ -55,14 +55,14 @@ def main():
     """Main body of the script."""
 
     merged = pd.read_csv(options.infile, sep="\t", index_col=0)
-    summary = pd.DataFrame(columns = merged.columns)
-    summary.loc["min.TIN"] = [round(np.min(merged[c].dropna()),2) for c in merged.columns]
-    summary.loc["Q1.TIN"] = [round(np.percentile(merged[c].dropna(), 25),2) for c in merged.columns]
-    summary.loc["Median.TIN"] = [round(np.median(merged[c].dropna()),2) for c in merged.columns]
-    summary.loc["Q3.TIN"] = [round(np.percentile(merged[c].dropna(), 75),2) for c in merged.columns]
-    summary.loc["max.TIN"] = [round(np.max(merged[c].dropna()),2) for c in merged.columns]
-    summary.loc["Avg.TIN"] = [round(np.mean(merged[c].dropna()),2) for c in merged.columns]
-    summary.loc["St.dev.TIN"] = [round(np.std(merged[c].dropna()),2) for c in merged.columns]
+    summary = pd.DataFrame(columns=merged.columns)
+    summary.loc["min.TIN"] = [round(np.min(merged[c].dropna()), 2) for c in merged.columns]
+    summary.loc["Q1.TIN"] = [round(np.percentile(merged[c].dropna(), 25), 2) for c in merged.columns]
+    summary.loc["Median.TIN"] = [round(np.median(merged[c].dropna()), 2) for c in merged.columns]
+    summary.loc["Q3.TIN"] = [round(np.percentile(merged[c].dropna(), 75), 2) for c in merged.columns]
+    summary.loc["max.TIN"] = [round(np.max(merged[c].dropna()), 2) for c in merged.columns]
+    summary.loc["Avg.TIN"] = [round(np.mean(merged[c].dropna()), 2) for c in merged.columns]
+    summary.loc["St.dev.TIN"] = [round(np.std(merged[c].dropna()), 2) for c in merged.columns]
     summary.to_csv(options.outfile, sep="\t")
 
 
