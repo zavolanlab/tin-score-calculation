@@ -9,11 +9,11 @@ with open('requirements.txt') as f:
 
 setup(
     name='tin-score-calculation',
-    version='0.5.1',
+    version='0.6.0',
     description="",
     url='',
     include_package_data=True,
-    scripts=['scripts/calculate-tin.py', 'scripts/merge-tin.py', 'scripts/plot-tin.py'],
+    scripts=['scripts/calculate-tin.py', 'scripts/merge-tin.py', 'scripts/plot-tin.py', 'scripts/summarize-tin.py'],
     install_requires=required,
     keywords='tin-score-calculation',
     classifiers=[
