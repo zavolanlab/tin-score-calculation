@@ -87,7 +87,7 @@ is fewer than cutoff.
 
 ## Extended usage
 
-Additionaly, this repository has been updated with two simple Python scripts.
+Additionaly, this repository has been updated with three simple Python scripts.
 
 ### TIN score merging
 
@@ -97,7 +97,7 @@ Merge TIN score tables for multiple samples.
 python merge-tin.py [-h] [options]
 ```
 
-### Parameters
+#### Parameters
 
 ```console
   -h, --help            show this help message and exit
@@ -121,7 +121,7 @@ Create per-sample [boxplots](https://en.wikipedia.org/wiki/Box_plot) of TIN scor
 python plot-tin.py [-h] [options]
 ```
 
-### Parameters
+#### Parameters
 
 ```console
   -h, --help            show this help message and exit
@@ -137,6 +137,29 @@ python plot-tin.py [-h] [options]
 The boxplots are generated in [PDF](https://en.wikipedia.org/wiki/PDF) and
 [PNG](https://en.wikipedia.org/wiki/Portable_Network_Graphics) formats under
 `output-file-prefix`+`.pdf` and `output-file-prefix`+`.png`.
+
+### TIN score summary
+
+Calculate simple summary statistics for the per-sample TIN scores.
+
+```sh
+python summarize-tin.py [-h] [options]
+```
+
+#### Parameters
+
+```console
+  -h, --help            show this help message and exit
+  -v {DEBUG,INFO,WARN,ERROR,CRITICAL}, --verbosity {DEBUG,INFO,WARN,ERROR,CRITICAL}
+                        Verbosity/Log level. Defaults to ERROR
+  -l LOGFILE, --logfile LOGFILE
+                        Store log to this file.
+  --input-file INFILE   Path to the table with merged TIN scores
+  --output-file OUTFILE
+                        Path for the output table with TIN statistics.
+```
+
+Output file is formatted in a TSV table as well.
 
 ## Run locally
 
@@ -184,6 +207,10 @@ merge-tin.py \
 plot-tin.py \
 --input-file .test/plot-tin/merged.tsv \
 --output-file-prefix .test/plot-tin/test
+
+summarize-tin.py \
+--input-file .test/summarize-tin/merged.tsv \
+--output-file .test/summarize-tin/test.tsv
 ```
 
 ## Run inside container
@@ -192,15 +219,16 @@ If you have [Docker](https://www.docker.com/) installed, you can also pull the
 Docker image:
 
 ```sh
-docker pull quay.io/biocontainers/tin-score-calculation:0.4--pyh5e36f6f_0
+docker pull quay.io/biocontainers/tin-score-calculation:0.6--pyh5e36f6f_0
 ```
 
 You can execute the scripts as following:
 
 ```sh
-docker run -it quay.io/biocontainers/tin-score-calculation:0.4--pyh5e36f6f_0 calculate-tin.py --help
-docker run -it quay.io/biocontainers/tin-score-calculation:0.4--pyh5e36f6f_0 merge-tin.py --help
-docker run -it quay.io/biocontainers/tin-score-calculation:0.4--pyh5e36f6f_0 plot-tin.py --help
+docker run -it quay.io/biocontainers/tin-score-calculation:0.6--pyh5e36f6f_0 calculate-tin.py --help
+docker run -it quay.io/biocontainers/tin-score-calculation:0.6--pyh5e36f6f_0 merge-tin.py --help
+docker run -it quay.io/biocontainers/tin-score-calculation:0.6--pyh5e36f6f_0 plot-tin.py --help
+docker run -it quay.io/biocontainers/tin-score-calculation:0.6--pyh5e36f6f_0 summarize-tin.py --help
 ```
 
 > **NOTE:** To run the tool on your own data in that manner, you will probably
@@ -210,7 +238,7 @@ docker run -it quay.io/biocontainers/tin-score-calculation:0.4--pyh5e36f6f_0 plo
 
 ## Version
 
-0.5.1
+0.6.0
 
 ## Contact
 
