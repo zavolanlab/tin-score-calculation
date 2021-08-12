@@ -80,7 +80,7 @@ jobs:
 
       - name: Test summarize-tin.py
         run: |
-          summarize-tin.py --input-file .test/summarize-tin/merged.tsv --output-file .test/summarize-tin/ci
+          summarize-tin.py --input-file .test/summarize-tin/merged.tsv --output-file .test/summarize-tin/ci.tsv
           cmp .test/summarize-tin/ci.tsv .test/summarize-tin/summary.tsv
 
   linting:
