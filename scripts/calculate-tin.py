@@ -31,7 +31,7 @@ import pysam
 
 # determine the upper bound on the number of processes that we want to run in
 # parallel
-nrProcesses = cpu_count() * 10
+nrProcesses = min(cpu_count() * 10, 8)
 
 warnings.filterwarnings("ignore")
 
