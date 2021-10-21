@@ -238,7 +238,7 @@ docker run -it quay.io/biocontainers/tin-score-calculation:0.6--pyh5e36f6f_0 sum
 
 ## Version
 
-0.6.0
+0.6.1
 
 ## Contact
 
