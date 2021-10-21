@@ -17,6 +17,7 @@ and is more sensitive to measure low quality RNA samples:
 from __future__ import print_function
 import math
 from multiprocessing import cpu_count, Manager, Pool
+from multiprocessing import set_start_method
 from optparse import OptionParser
 import os
 import sys
@@ -365,6 +366,7 @@ def gf(arg_list):
 
 
 def main():
+    set_start_method("spawn")
     usage = "%prog [options]" + "\n" + __doc__ + "\n"
     parser = OptionParser(usage, version="%prog " + __version__)
     parser.add_option(
