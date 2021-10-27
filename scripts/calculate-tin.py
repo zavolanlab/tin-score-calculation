@@ -16,7 +16,7 @@ and is more sensitive to measure low quality RNA samples:
 ----------------------------------------------------------------------------"""
 from __future__ import print_function
 import math
-from multiprocessing import cpu_count, Manager, Pool
+from multiprocessing import Manager, Pool
 from multiprocessing import set_start_method
 from optparse import OptionParser
 import os
