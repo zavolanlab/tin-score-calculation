@@ -29,10 +29,6 @@ from qcmodule import BED
 import numpy as np
 import pysam
 
-# determine the upper bound on the number of processes that we want to run in
-# parallel
-nrProcesses = min(cpu_count() * 10, 8)
-
 warnings.filterwarnings("ignore")
 
 __author__ = "Liguo Wang"
@@ -437,6 +433,17 @@ def main():
             "use this option if there are substantial intronic reads."
         ),
     )
+    parser.add_option(
+        "-p",
+        "--processes",
+        action="store",
+        type="int",
+        dest="nrProcesses",
+        default=1,
+        help=(
+            "Number of child processes for the parallelization. Default: 1"
+        ),
+    )
     (options, args) = parser.parse_args()
 
     # if '-s' was set
@@ -496,7 +503,7 @@ def main():
 
     mgr = Manager()
     sample_TINS_per_transcript = mgr.dict()
-    pool = Pool(processes=nrProcesses)
+    pool = Pool(processes=options.nrProcesses)
 
     genomic_positions_list = genomic_positions(
         refbed=options.ref_gene_model, sample_size=options.sample_size
