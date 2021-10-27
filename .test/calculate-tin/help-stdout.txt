@@ -44,3 +44,6 @@ Options:
                         Subtract background noise (estimated from intronic
                         reads). Only use this option if there are substantial
                         intronic reads.
+  -p NRPROCESSES, --processes=NRPROCESSES
+                        Number of child processes for the parallelization.
+                        Default: 1
