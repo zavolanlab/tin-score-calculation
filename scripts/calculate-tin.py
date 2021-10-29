@@ -503,7 +503,6 @@ def main():
 
     mgr = Manager()
     sample_TINS_per_transcript = mgr.dict()
-    pool = Pool(processes=options.nrProcesses)
 
     genomic_positions_list = genomic_positions(
         refbed=options.ref_gene_model, sample_size=options.sample_size
@@ -536,7 +535,12 @@ def main():
                 ]
             )
 
+        pool = Pool(processes=options.nrProcesses)
         pool.imap_unordered(gf, conditions)
+
+        # clean up processes
+        pool.close()
+        pool.join()
 
     for ex in sorted(sample_TINS_per_transcript.keys()):
         vals = [round(x, 10) for x in sample_TINS_per_transcript[ex]]
@@ -544,11 +548,6 @@ def main():
             "%s\t%s" % (ex, "\t".join(map(str, vals))),
             file=sys.stdout,
         )
-
-    # clean up processes
-    pool.close()
-    pool.join()
-
 
 if __name__ == "__main__":
     main()
