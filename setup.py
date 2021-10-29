@@ -9,7 +9,7 @@ with open('requirements.txt') as f:
 
 setup(
     name='tin-score-calculation',
-    version='0.6.2',
+    version='0.6.3',
     description="",
     url='',
     include_package_data=True,
