@@ -44,6 +44,9 @@ python calculate-tin.py [-h] [options]
                         Subtract background noise (estimated from intronic
                         reads). Only use this option if there are substantial
                         intronic reads.
+  -p NRPROCESSES, --processes=NRPROCESSES
+                        Number of child processes for the parallelization.
+                        Default: 1
 ```
 
 ### File formats
@@ -238,7 +241,7 @@ docker run -it quay.io/biocontainers/tin-score-calculation:0.6--pyh5e36f6f_0 sum
 
 ## Version
 
-0.6.2
+0.6.3
 
 ## Contact
 
